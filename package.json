@@ -1,0 +1,16 @@
+{
+  "name": "NodeJS&MySql",
+  "version": "1.0.0",
+  "description": "sfsf",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "server": "nodemon index.js"
+  },
+  "author": "Orxan Abbasli",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1",
+    "nodemon": "^1.19.3"
+  }
+}
