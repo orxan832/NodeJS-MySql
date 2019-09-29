@@ -1,13 +1,25 @@
-const express = require('express');
+const express = require("express");
+const exphbs = require("express-handlebars");
+const bodyParser = require("body-parser");
+const path = require("path");
+const db = require('./db');
+const router = require('./router');
+
 const app = express();
 
-app.get('/api/customers', function(req, res){
-    const customers = [
-        {id: 1, name: 'Orxan'},
-        {id: 2, name: 'Baxram'}
-    ];
-    res.json(customers);
-});
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }))
+
+// parse application/json
+app.use(bodyParser.json())
+
+db.authenticate()
+  .then(() => console.log("Database is connected..."))
+  .catch(err => console.log("Error: " + err));
+
+
+
+app.use("/gigs", router);
 
 const port = 7000;
 
