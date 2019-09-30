@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize');
 const db = require('./db');
 
-const Person = db.define('user', {
+const Person = db.define('person', {
     id: {
         type: Sequelize.BIGINT,
         primaryKey: true,
@@ -11,26 +11,10 @@ const Person = db.define('user', {
     name: {
         type: Sequelize.STRING,
         allowNull: false
-    },
-    surname: {
-        type: Sequelize.STRING,
-        allowNull: false
-    },
-    username: {
-        type: Sequelize.STRING,
-        allowNull: false,
-        unique: true
-    },
-    email: {
-        type: Sequelize.STRING,
-        allowNull: false,
-        unique: true
-    },
-    password: {
-        type: Sequelize.STRING,
-        allowNull: false
     }
 
+}, {
+    freezeTableName: true
 });
 
 module.exports = Person;

@@ -12,19 +12,17 @@ router.get('/', (req, res) => {
     .catch(err => console.log(err));
 });
 
-router.post('/insert', (req, res) => {
-    return Person.create({
-        id: req.body.id,
-        name:req.body.name,
-        surname:req.body.surname,
-        username:req.body.username,
-        email:req.body.email,
-        password:req.body.password,
-    })
-    .then(users => {
-        if(users) res.send(users)
-        else res.status(400).send('Error ss');
-    })
-})
+router.post('/test', function (request, response) {
+    return users.create({
+        id: request.body.id,
+        name: request.body.name
+    }).then(function (users) {
+        if (users) {
+            response.send(users);
+        } else {
+            response.status(400).send('Error in insert new record');
+        }
+    });
+});
 
 module.exports = router;
